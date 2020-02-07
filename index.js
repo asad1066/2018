@@ -50,7 +50,7 @@ app.use('', express.static('public', { 'index': false }), serveIndex('public', {
 
 let server = http.createServer(app);
 
-const serverPort = 1500;
+const serverPort = 1517;
 server.listen(serverPort);
 console.log('listening on port', serverPort)
 
@@ -58,7 +58,7 @@ var wss = new WebSocketServer({ server: server });
 
 wss.on('connection', function(ws) {
     var id = setInterval(function() {
-    	sensors['counter'] = ++counter
+        sensors['counter'] = ++counter
         ws.send(JSON.stringify(sensors), function() { /* ignore errors */ });
     }, 500);
    // console.log('connection to client',id);
